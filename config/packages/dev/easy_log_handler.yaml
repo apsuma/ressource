@@ -12,5 +12,5 @@ services:
 #            channels: ['!event']
 #            level:    debug
 #        easylog:
-#            type: service
+#            type: Service
 #            id:   EasyCorp\EasyLog\EasyLogHandler

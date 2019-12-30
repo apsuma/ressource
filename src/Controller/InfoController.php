@@ -5,18 +5,19 @@ namespace App\Controller;
 use App\Entity\Info;
 use App\Form\InfoType;
 use App\Repository\InfoRepository;
+use App\Service\Ago;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/info")
+ * @Route("/info", name="info_")
  */
 class InfoController extends AbstractController
 {
     /**
-     * @Route("/", name="info_index", methods={"GET"})
+     * @Route("/", name="index", methods={"GET"})
      */
     public function index(InfoRepository $infoRepository): Response
     {
@@ -26,7 +27,7 @@ class InfoController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="info_new", methods={"GET","POST"})
+     * @Route("/new", name="new", methods={"GET","POST"})
      */
     public function new(Request $request): Response
     {
@@ -49,17 +50,19 @@ class InfoController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="info_show", methods={"GET"})
+     * @Route("/{id}", name="show", methods={"GET"})
      */
-    public function show(Info $info): Response
+    public function show(Info $info, Ago $ago): Response
     {
+        $dateFrom = $ago->diffForHumans($info->getCreatedAt());
+        var_dump($dateFrom);
         return $this->render('info/show.html.twig', [
-            'info' => $info,
+            'info' => $info, 'dateInt'=> $dateFrom
         ]);
     }
 
     /**
-     * @Route("/{id}/edit", name="info_edit", methods={"GET","POST"})
+     * @Route("/{id}/edit", name="edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Info $info): Response
     {
@@ -79,7 +82,7 @@ class InfoController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="info_delete", methods={"DELETE"})
+     * @Route("/{id}", name="delete", methods={"DELETE"})
      */
     public function delete(Request $request, Info $info): Response
     {

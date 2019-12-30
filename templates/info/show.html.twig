@@ -1,10 +1,34 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Info{% endblock %}
+{% block title %} {{ info.subject }}Info{% endblock %}
 
 {% block body %}
-    <h1>Info</h1>
+    <h1>Ressource : {{ info.subject }}</h1>
+    <div class="container">
+        <h1>Sujet : {{ info.subject }}</h1>
+        {% if (info.author) %}
+            <h2>Auteur : {{ info.author }} </h2>
+        {% endif %}
+        <div class="row">
+            <h2>Source :</h2>
+            <a href="{{ info.source }}">{{ info.source }}</a>
+        </div>
+        <div class="row"> mise en ligne : {{ dateInt }}</div>
+        <div class="row">
+            <h3>Description :</h3>
+            <h3>{{ info.description }}</h3>
+        </div>
+        {% if (info.moreabout)  %}
+            <h2>En savoir plus : {{ info.moreabout }} </h2>
+        {% endif %}
+        <p>Mots-clés associés : </p>
+        <ul>
+            {% for keyword in info.keywords %}
+                <li>{{ keyword.name }}</li>
+            {% endfor %}
+        </ul>
 
+    </div>
     <table class="table">
         <tbody>
             <tr>
@@ -14,29 +38,7 @@
             <tr>
                 <th>CreatedAt</th>
                 <td>{{ info.createdAt ? info.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
-            <tr>
-                <th>Subject</th>
-                <td>{{ info.subject }}</td>
-            </tr>
-            <tr>
-                <th>Source</th>
-                <td>{{ info.source }}</td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>{{ info.description }}</td>
-            </tr>
-            <tr>
-                <th>Author</th>
-                <td>{{ info.author }}</td>
-            </tr>
-            <tr>
-                <th>Moreabout</th>
-                <td>{{ info.moreabout }}</td>
-            </tr>
-        </tbody>
-    </table>
+
 
     <a href="{{ path('info_index') }}">back to list</a>
 
