@@ -3,43 +3,34 @@
 {% block title %}Info index{% endblock %}
 
 {% block body %}
-    <h1>Info index</h1>
+    <h1 class="text-center text-primary display-4">Les ressources</h1>
 
+    <a class="btn btn-primary btn-block" href="{{ path('info_new') }}"><i class="fas fa-plus-circle"></i></a>
     <table class="table">
         <thead>
             <tr>
                 <th>Id</th>
-                <th>CreatedAt</th>
                 <th>Subject</th>
-                <th>Source</th>
                 <th>Description</th>
-                <th>Author</th>
-                <th>Moreabout</th>
-                <th>actions</th>
+                <th>Voir/Editer</th>
             </tr>
         </thead>
         <tbody>
         {% for info in infos %}
             <tr>
                 <td>{{ info.id }}</td>
-                <td>{{ info.createdAt ? info.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ info.subject }}</td>
-                <td>{{ info.source }}</td>
+                <td><a href="{{ info.source }}">{{ info.subject }}</a></td>
                 <td>{{ info.description }}</td>
-                <td>{{ info.author }}</td>
-                <td>{{ info.moreabout }}</td>
                 <td>
-                    <a href="{{ path('info_show', {'id': info.id}) }}">show</a>
-                    <a href="{{ path('info_edit', {'id': info.id}) }}">edit</a>
+                    <a class="btn btn-primary" href="{{ path('info_show', {'id': info.id}) }}"><i class="far fa-eye"></i></a>
+                    <a class="btn btn-primary" href="{{ path('info_edit', {'id': info.id}) }}"><i class="fas fa-edit"></i></a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="8">no records found</td>
+                <td colspan="8">aucune ressource trouvée</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
-
-    <a href="{{ path('info_new') }}">Create new</a>
 {% endblock %}

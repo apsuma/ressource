@@ -2,7 +2,14 @@
 {% block title %}Ressource - Accueil{% endblock %}
 
 {% block body %}
-    <h1>Bienvenu à l'accueil du site Ressource</h1>
-    <a href="/" class="btn btn-primary">
-        <i class="fas fa-angle-double-right"></i></a>
+        <div class="container">
+            <h1 class="display-3 text-primary text-center font-weight-bold">Bienvenu sur le site Ressource</h1>
+            <p class="lead">Vous pourrez découvrir sur ce site des informations collectées dans le cadre d'une veille sur les langages évoqués ci-dessus. Il est possible de rechercher les articles par thème et d'indexer les articles par mot-clé.</p>
+            <div class="row">
+                <a href="{{ path('keyword_index') }}" class="btn btn-group-lg btn-primary btn-block">
+                    <i class="fas fa-angle-double-right"></i> MOTS-CLES </a>
+                <a href="{{ path('info_index') }}" class="btn btn-group-lg btn-primary btn-block">
+                    <i class="fas fa-angle-double-right"></i> RESSOURCES </a>
+            </div>
+        </div>
 {% endblock %}

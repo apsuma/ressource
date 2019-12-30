@@ -3,11 +3,11 @@
 {% block title %}Edit Info{% endblock %}
 
 {% block body %}
-    <h1>Edit Info</h1>
+    <h1 class="text-center text-primary display-4">Editer Ressource</h1>
 
     {{ include('info/_form.html.twig', {'button_label': 'Update'}) }}
 
-    <a href="{{ path('info_index') }}">back to list</a>
+    <a class="btn btn-primary" href="{{ path('info_index') }}">retour à la liste</a>
 
-    {{ include('info/_delete_form.html.twig') }}
+    <a class="btn btn-primary">{{ include('info/_delete_form.html.twig') }}</a>
 {% endblock %}

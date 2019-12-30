@@ -1,6 +1,11 @@
-$blue: #127a80;
+$blue: #50c5c7;
 $dark: rgba(238, 10, 7, 0.5);
+body {
+  font-family: 'Muli', sans-serif;
+  }
 
+
+@import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
 @import "~bootstrap/scss/bootstrap";
 @import '~@fortawesome/fontawesome-free/scss/regular';
 @import '~@fortawesome/fontawesome-free/scss/solid';

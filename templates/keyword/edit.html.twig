@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Keyword{% endblock %}
+
+{% block body %}
+    <h1 class="text-center text-primary display-4">Edit Keyword</h1>
+
+    <a class="btn btn-primary">{{ include('keyword/_form.html.twig', {'button_label': 'Update'}) }}</a>
+
+    <a class="btn btn-primary" href="{{ path('keyword_index') }}">back to list</a>
+
+    <a class="btn btn-primary">{{ include('keyword/_delete_form.html.twig') }}</a>
+{% endblock %}

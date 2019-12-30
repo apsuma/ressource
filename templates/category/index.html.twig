@@ -1,21 +1,29 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Ressource - Categorie {{ category.name }}{% endblock %}
+{% block title %}Ressource {{ category.name }}{% endblock %}
 
 {% block body %}
-<h1>Articles concernant : {{ category.name }}</h1>
-    {% for info in category.infos %}
-    <h2>{{ info.subject }}</h2>
-        <p>{{ info.author }}</p>
-        <p>Source : {{ info.source }}</p>
-        <p>Description : {{ info.description }}</p>
-        <p>En savoir plus : {{ info.moreabout }}</p>
-        <p>Mots-clés associés : </p>
-        <ul>
-        {% for keyword in info.keywords %}
-            <li>{{ keyword.name }}</li>
-        {% endfor %}
-        </ul>
-    {% endfor %}
-
+    <h1 class="text-center text-primary display-4">Articles sur {{ category.name }}</h1>
+    <div class="container">
+        <div class="row">
+            {% for info in category.infos %}
+                <div class="card border-primary col-4">
+                    <div class="card-body">
+                        <h4 class="card-title bg-primary font-weight-bold">{{ info.subject }}</h4>
+                        <p class="card-text">{{ info.description }}</p>
+                        <p>Mots-clés associés : </p>
+                        <ul class="list-unstyled">
+                            {% for keyword in info.keywords %}
+                                <li>{{ keyword.name }}</li>
+                            {% endfor %}
+                        </ul>
+                        <div class="row d-flex justify-content-around">
+                            <a class="btn btn-primary" href="{{ path('info_show', {'id': info.id}) }}"><i class="far fa-eye"></i></a>
+                            <a class="btn btn-primary" href="{{ info.source }}"><i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
 {% endblock %}

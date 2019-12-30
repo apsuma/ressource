@@ -15,7 +15,7 @@ class InfoType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('createdAt')
+            ->remove('createdAt')
             ->add('subject')
             ->add('source')
             ->add('description')

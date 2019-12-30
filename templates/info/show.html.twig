@@ -3,7 +3,7 @@
 {% block title %} {{ info.subject }}Info{% endblock %}
 
 {% block body %}
-    <h1>Ressource : {{ info.subject }}</h1>
+    <h1 class="text-center text-primary display-4">Détail de la ressource</h1>
     <div class="container">
         <h1>Sujet : {{ info.subject }}</h1>
         {% if (info.author) %}
@@ -22,27 +22,17 @@
             <h2>En savoir plus : {{ info.moreabout }} </h2>
         {% endif %}
         <p>Mots-clés associés : </p>
-        <ul>
+        <ul class="list-unstyled">
             {% for keyword in info.keywords %}
                 <li>{{ keyword.name }}</li>
             {% endfor %}
         </ul>
 
     </div>
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ info.id }}</td>
-            </tr>
-            <tr>
-                <th>CreatedAt</th>
-                <td>{{ info.createdAt ? info.createdAt|date('Y-m-d H:i:s') : '' }}</td>
 
+    <a class="btn btn-primary" href="{{ path('info_index') }}">retour à la liste</a>
 
-    <a href="{{ path('info_index') }}">back to list</a>
+    <a class="btn btn-primary" href="{{ path('info_edit', {'id': info.id}) }}"><i class="fas fa-edit"></i></a>
 
-    <a href="{{ path('info_edit', {'id': info.id}) }}">edit</a>
-
-    {{ include('info/_delete_form.html.twig') }}
+    <a class="btn btn-primary">{{ include('info/_delete_form.html.twig') }}</a>
 {% endblock %}
