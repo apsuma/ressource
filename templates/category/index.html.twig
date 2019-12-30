@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ressource - Categorie {{ category.name }}{% endblock %}
+
+{% block body %}
+<h1>Articles concernant : {{ category.name }}</h1>
+    {% for info in category.infos %}
+    <h2>{{ info.subject }}</h2>
+        <p>{{ info.author }}</p>
+        <p>Source : {{ info.source }}</p>
+        <p>Description : {{ info.description }}</p>
+        <p>En savoir plus : {{ info.moreabout }}</p>
+        <p>Mots-clés associés : </p>
+        <ul>
+        {% for keyword in info.keywords %}
+            <li>{{ keyword }}</li>
+        {% endfor %}
+        </ul>
+    {% endfor %}
+
+{% endblock %}
