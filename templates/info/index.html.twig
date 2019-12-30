@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Info index{% endblock %}
+
+{% block body %}
+    <h1>Info index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>CreatedAt</th>
+                <th>Subject</th>
+                <th>Source</th>
+                <th>Description</th>
+                <th>Author</th>
+                <th>Moreabout</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for info in infos %}
+            <tr>
+                <td>{{ info.id }}</td>
+                <td>{{ info.createdAt ? info.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ info.subject }}</td>
+                <td>{{ info.source }}</td>
+                <td>{{ info.description }}</td>
+                <td>{{ info.author }}</td>
+                <td>{{ info.moreabout }}</td>
+                <td>
+                    <a href="{{ path('info_show', {'id': info.id}) }}">show</a>
+                    <a href="{{ path('info_edit', {'id': info.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('info_new') }}">Create new</a>
+{% endblock %}
