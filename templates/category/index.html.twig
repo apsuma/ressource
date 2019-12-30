@@ -13,7 +13,7 @@
         <p>Mots-clés associés : </p>
         <ul>
         {% for keyword in info.keywords %}
-            <li>{{ keyword }}</li>
+            <li>{{ keyword.name }}</li>
         {% endfor %}
         </ul>
     {% endfor %}
