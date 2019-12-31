@@ -8,6 +8,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints\Assert;
 
+
 /**
  * @ORM\Entity(repositoryClass="App\Repository\InfoRepository")
  */
@@ -17,26 +18,31 @@ class Info
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @Assert\NotBlank
      */
     private $id;
 
     /**
      * @ORM\Column(type="datetime")
+     * @Assert\NotBlank
      */
     private $createdAt;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="merci d'entrer le sujet")
      */
     private $subject;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="merci d'entrer le lien internet vers la source")
      */
     private $source;
 
     /**
      * @ORM\Column(type="text")
+     * @Assert\NotBlank(message="merci de résumer la ressource")
      */
     private $description;
 
