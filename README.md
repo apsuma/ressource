@@ -17,12 +17,15 @@
 In order to install the project, after a git clone :
 ```shell script
 yarn install
-composer require encore
+composer install
 ```
 create your .env.local with your login and password to connect the database `ressource`
 ##### and before run this project on a browser :
-- yarn encore dev --watch
-- php bin/console server:run
+```shell script
+yarn encore dev --watch
+php bin/console server:run
+```
+
 - at the first time, you need to create your database (`ressource`) with `Doctrine` and a schema update. You can use the insert.sh to create items in tables `keyword` and `category`. 
 
 ## Author
