@@ -5,21 +5,20 @@
 {% block body %}
     <h1 class="text-center text-primary display-4">Articles sur {{ category.name }}</h1>
     <div class="container">
-        <div class="row">
+        <div class="card-deck">
             {% for info in category.infos %}
-                <div class="card border-primary col-4">
+                <div class="card bg-primary rounded col-4 shadow p-3 mb-5">
                     <div class="card-body">
-                        <h4 class="card-title bg-primary font-weight-bold">{{ info.subject }}</h4>
+                        <h4 class="card-title bg-white font-weight-bold">{{ info.subject }}</h4>
                         <p class="card-text">{{ info.description }}</p>
-                        <p>Mots-clés associés : </p>
-                        <ul class="list-unstyled">
+                        <p>Mots-clés associés :
                             {% for keyword in info.keywords %}
-                                <li>{{ keyword.name }}</li>
+                                {{ keyword.name }}
                             {% endfor %}
-                        </ul>
+                        </p>
                         <div class="row d-flex justify-content-around">
-                            <a class="btn btn-primary" href="{{ path('info_show', {'id': info.id}) }}"><i class="far fa-eye"></i></a>
-                            <a class="btn btn-primary" href="{{ info.source }}"><i class="fas fa-external-link-alt"></i></a>
+                            <a class="btn" href="{{ path('info_show', {'id': info.id}) }}"><i class="far fa-eye"></i></a>
+                            <a class="btn" href="{{ info.source }}"><i class="fas fa-external-link-alt"></i></a>
                         </div>
                     </div>
                 </div>

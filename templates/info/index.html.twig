@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Info index{% endblock %}
+{% block title %}Index Ressources{% endblock %}
 
 {% block body %}
     <h1 class="text-center text-primary display-4">Les ressources</h1>
@@ -22,8 +22,10 @@
                 <td><a href="{{ info.source }}">{{ info.subject }}</a></td>
                 <td>{{ info.description }}</td>
                 <td>
-                    <a class="btn btn-primary" href="{{ path('info_show', {'id': info.id}) }}"><i class="far fa-eye"></i></a>
-                    <a class="btn btn-primary" href="{{ path('info_edit', {'id': info.id}) }}"><i class="fas fa-edit"></i></a>
+                    <div class="row">
+                    <a class="btn btn-primary mx-1" href="{{ path('info_show', {'id': info.id}) }}"><i class="far fa-eye"></i></a>
+                    <a class="btn btn-primary mx-1" href="{{ path('info_edit', {'id': info.id}) }}"><i class="fas fa-edit"></i></a>
+                    </div>
                 </td>
             </tr>
         {% else %}

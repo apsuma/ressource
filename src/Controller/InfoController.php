@@ -6,6 +6,7 @@ use App\Entity\Info;
 use App\Form\InfoType;
 use App\Repository\InfoRepository;
 use App\Service\Ago;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -29,14 +30,13 @@ class InfoController extends AbstractController
     /**
      * @Route("/new", name="new", methods={"GET","POST"})
      */
-    public function new(Request $request): Response
+    public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
         $info = new Info();
         $form = $this->createForm(InfoType::class, $info);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($info);
             $entityManager->flush();
 
@@ -55,7 +55,6 @@ class InfoController extends AbstractController
     public function show(Info $info, Ago $ago): Response
     {
         $dateFrom = $ago->diffForHumans($info->getCreatedAt());
-        var_dump($dateFrom);
         return $this->render('info/show.html.twig', [
             'info' => $info, 'dateInt'=> $dateFrom
         ]);
